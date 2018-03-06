@@ -18,7 +18,7 @@ class DCGAN(object):
          batch_size=64, sample_num = 64, output_height=64, output_width=64,
          y_dim=None, z_dim=100, gf_dim=64, df_dim=64,
          gfc_dim=1024, dfc_dim=1024, c_dim=3, dataset_name='default',
-         input_fname_pattern='*.jpg', checkpoint_dir=None, sample_dir='sample', dir_pre="gs://dataset_then"):
+         input_fname_pattern='*.jpg', checkpoint_dir=None, sample_dir='sample', dir_pre="gs://"):
     """
 
     Args:
@@ -75,7 +75,7 @@ class DCGAN(object):
       self.data_X, self.data_y = self.load_mnist()
       self.c_dim = self.data_X[0].shape[-1]
     else:
-      self.data = glob(os.path.join(self.dir_pre, self.dataset_name, self.input_fname_pattern))
+      self.data = glob(os.path.join(self.dir_pre+"dataset_then", self.dataset_name, self.input_fname_pattern))
       imreadImg = imread(self.data[0])
       if len(imreadImg.shape) >= 3: #check if image is a non-grayscale image by checking channel number
         self.c_dim = imread(self.data[0]).shape[-1]
@@ -289,7 +289,7 @@ class DCGAN(object):
               }
             )
             save_images(samples, image_manifold_size(samples.shape[0]),
-                  self.dir_pre+'/{}/train_{:02d}_{:04d}.png'.format(config.sample_dir, epoch, idx))
+                  self.dir_pre+'result_then/{}/train_{:02d}_{:04d}.png'.format(config.sample_dir, epoch, idx))
             print("[Sample] d_loss: %.8f, g_loss: %.8f" % (d_loss, g_loss)) 
           else:
             try:

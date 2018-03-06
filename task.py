@@ -184,7 +184,6 @@ if __name__ == '__main__':
   )
   parser.add_argument(
       '--dataset',
-      type=int
   )
   parser.add_argument(
       '--epoch',
@@ -192,7 +191,6 @@ if __name__ == '__main__':
   )
   parser.add_argument(
       '--input-fname-pattern',
-      type=int
   )
   
 

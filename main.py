@@ -22,7 +22,7 @@ flags.DEFINE_integer("input_height", 96, "The size of image to use (will be cent
 flags.DEFINE_integer("input_width", 96, "The size of image to use (will be center cropped). If None, same value as input_height [None]")
 flags.DEFINE_integer("output_height", 84, "The size of the output images to produce [64]")
 flags.DEFINE_integer("output_width", 84, "The size of the output images to produce. If None, same value as output_height [None]")
-flags.DEFINE_string("dataset", "anime", "The name of dataset [celebA, mnist, lsun]")
+flags.DEFINE_string("dataset", "faces", "The name of dataset [celebA, mnist, lsun]")
 flags.DEFINE_string("input_fname_pattern", "*.jpg", "Glob pattern of filename of input images [*]")
 flags.DEFINE_string("checkpoint_dir", "checkpoint", "Directory name to save the checkpoints [checkpoint]")
 flags.DEFINE_string("sample_dir", "samples", "Directory name to save the image samples [samples]")

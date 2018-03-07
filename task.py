@@ -63,7 +63,7 @@ def run_experiment(hparams):
     ' --crop'+
     ' --train'+
     ' --epoch '+epoch+
-    ' --input_fname_pattern '+input_fname_pattern)
+    ' --input_fname_pattern '+'*.jpg')
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
@@ -183,14 +183,11 @@ if __name__ == '__main__':
       type=int
   )
   parser.add_argument(
-      '--dataset',
+      '--dataset'
   )
   parser.add_argument(
       '--epoch',
       type=int
-  )
-  parser.add_argument(
-      '--input-fname-pattern',
   )
   
 

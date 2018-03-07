@@ -55,15 +55,15 @@ def run_experiment(hparams):
   #                                 train_spec,
   #                                 eval_spec)
 
-  os.system('python main.py ' + '--input_height ' + hparams.input_height +
-    ' --input_width '+hparams.input_width+
-    ' --output_height '+hparams.output_height+
-    ' --output_width '+hparams.output_width+
-    ' --dataset '+dataset+
+  os.system('python main.py ' + '--input_height ' + str(hparams.input_height) +
+    ' --input_width '+str(hparams.input_width)+
+    ' --output_height '+str(hparams.output_height)+
+    ' --output_width '+str(hparams.output_width)+
+    ' --dataset '+hparams.dataset+
     ' --crop'+
     ' --train'+
-    ' --epoch '+epoch+
-    ' --input_fname_pattern '+'*.jpg')
+    ' --epoch '+str(hparams.epoch)+
+    ' --input_fname_pattern '+ '*.jpg')
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()

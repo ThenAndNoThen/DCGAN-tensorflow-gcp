@@ -55,7 +55,8 @@ def run_experiment(hparams):
   #                                 train_spec,
   #                                 eval_spec)
 
-  os.system('python main.py ' + '--input_height ' + str(hparams.input_height) +
+  print (os.getcwd())
+  os.system('python ./main.py ' + '--input_height ' + str(hparams.input_height) +
     ' --input_width '+str(hparams.input_width)+
     ' --output_height '+str(hparams.output_height)+
     ' --output_width '+str(hparams.output_width)+

@@ -7,6 +7,11 @@ from utils import pp, visualize, to_json, show_all_variables
 
 import tensorflow as tf
 
+import argparse
+from tensorflow.contrib.learn.python.learn.utils import (
+    saved_model_export_utils)
+from tensorflow.contrib.training.python.training import hparam
+
 flags = tf.app.flags
 flags.DEFINE_integer("epoch", 25, "Epoch to train [25]")
 flags.DEFINE_float("learning_rate", 0.0002, "Learning rate of for adam [0.0002]")
@@ -97,4 +102,34 @@ def main(_):
     visualize(sess, dcgan, FLAGS, OPTION)
 
 if __name__ == '__main__':
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+      '--job-dir',
+      help='GCS location to write checkpoints and export models',
+      required=True
+  )
+
+  # Argument to turn on all logging
+  parser.add_argument(
+      '--verbosity',
+      choices=[
+          'DEBUG',
+          'ERROR',
+          'FATAL',
+          'INFO',
+          'WARN'
+      ],
+      default='INFO',
+  )
+
+  args = parser.parse_args()
+
+  # Set python level verbosity
+  tf.logging.set_verbosity(args.verbosity)
+  # Set C++ Graph Execution level verbosity
+  os.environ['TF_CPP_MIN_LOG_LEVEL'] = str(
+      tf.logging.__dict__[args.verbosity] / 10)
+
+  # Run the training job
+  hparams=hparam.HParams(**args.__dict__)
   tf.app.run()

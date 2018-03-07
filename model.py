@@ -75,6 +75,7 @@ class DCGAN(object):
       self.data_X, self.data_y = self.load_mnist()
       self.c_dim = self.data_X[0].shape[-1]
     else:
+      print(self.dir_pre+"dataset_then/"+self.dataset_name+"/"+self.input_fname_pattern)
       self.data = glob(self.dir_pre+"dataset_then/"+self.dataset_name+"/"+self.input_fname_pattern)
       imreadImg = imread(self.data[0])
       if len(imreadImg.shape) >= 3: #check if image is a non-grayscale image by checking channel number
